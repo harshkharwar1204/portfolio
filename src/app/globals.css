@@ -19,3 +19,16 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.glowing-text {
+  text-shadow: 0 0 5px #D29515,  /* Bright yellow glow */
+               0 0 10px #D29515,
+               0 0 15px #D29515;
+  color: white; /* Adjust text color as needed */
+  animation: glowing 1.5s infinite alternate;
+}
+
+@keyframes glowing {
+  0% { text-shadow: 0 0 5px #D29515, 0 0 10px #D29515; }
+  100% { text-shadow: 0 0 10px #D29515, 0 0 20px #D29515; }
+}
