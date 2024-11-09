@@ -6,7 +6,8 @@ import {
 import React, { useState, useEffect } from "react";
 import SkillDataProvider from "../sub/SkillDataProvider";
 import SkillText from "../sub/SkillText";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
+import Image from "next/image";
 
 const About = () => {
   const [isContentVisible, setContentVisible] = useState(false);
@@ -51,25 +52,26 @@ const About = () => {
             </h2>
 
             <p>
-              I'm a web developer with a passion for building interactive and user-friendly websites. With skills in JavaScript, React, and Tailwind CSS, I focus on creating seamless and visually appealing designs. I enjoy working with frameworks like Next.js and using tools such as Framer Motion to enhance interactivity in my projects.
+              I&#39;m a web developer with a passion for building interactive and user-friendly websites. With skills in JavaScript, React, and Tailwind CSS, I focus on creating seamless and visually appealing designs. I enjoy working with frameworks like Next.js and using tools such as Framer Motion to enhance interactivity in my projects.
             </p>
 
             <p className="my-4">
-              On the back-end, I've gained experience working with technologies like Node.js, Express, and MongoDB to build full-stack applications. I'm comfortable working with APIs, using Git for version control, and integrating 3D models with libraries like Spline to make projects more dynamic.
+              On the back-end, I&#39;ve gained experience working with technologies like Node.js, Express, and MongoDB to build full-stack applications. I&#39;m comfortable working with APIs, using Git for version control, and integrating 3D models with libraries like Spline to make projects more dynamic.
             </p>
 
             <p>
-              I love collaborating on projects and contributing to open-source work on GitHub. Participating in hackathons helps me stay up-to-date with the latest industry trends. Whether working solo or in a team, I'm committed to creating engaging web experiences that combine creativity and functionality.
+              I love collaborating on projects and contributing to open-source work on GitHub. Participating in hackathons helps me stay up-to-date with the latest industry trends. Whether working solo or in a team, I&#39;m committed to creating engaging web experiences that combine creativity and functionality.
             </p>
           </div>
           <div className="col-span-3 relative h-max rounded-3xl border-2 border-solid border-[#BFBFBF] bg-black p-6">
             <div className="absolute top-0 -right-4 -z-10 w-[102%] h-[103%] rounded-[2rem] bg-[#BFBFBF]" />
-            <img
+            <Image
               src="/HARSH IMAGE.jpeg"
               alt="Harsh Kharwar"
               width={100}
               height={150}
               className="w-full h-auto rounded-2xl"
+              priority
             />
           </div>
         </div>

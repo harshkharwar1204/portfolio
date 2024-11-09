@@ -5,7 +5,7 @@ import Projects from "@/src/components/main/Projects";
 import About from "@/src/components/main/About";
 import Education from "@/src/components/main/Education";
 import Contact from "@/src/components/main/Contact";
-import { Card } from "../components/main/CertiCard";
+import { Card } from "../components/main/Card";
 
 export default function Home() {
   return (
