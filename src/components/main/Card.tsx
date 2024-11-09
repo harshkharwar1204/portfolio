@@ -1,56 +1,91 @@
-import { CardSpotlight } from "../sub/Cardspotlight"; 
+"use client";
+
+import { InfiniteMovingCards } from '../sub/InfiniteMovingCard';   // Adjust the import path accordingly
+import { CardSpotlight } from "../sub/Cardspotlight";
+import { certificates } from '@/src/constants';
+import { useState } from "react";
+import { motion } from 'framer-motion';
 
 export function Card() {
+    // State to store the clicked image URL
+    const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+    // Function to handle image click
+    const handleImageClick = (imageUrl: string) => {
+        setSelectedImage(imageUrl);
+    };
+
+    // Function to close the modal
+    const closeModal = () => {
+        setSelectedImage(null);
+    };
+
     return (
-      <div className="flex justify-center items-center h-screen">
-        <CardSpotlight className="h-96 w-96">
-          <p className="text-xl font-bold relative z-20 mt-2 text-white">
-            Authentication steps
-          </p>
-          <div className="text-neutral-200 mt-4 relative z-20">
-            Follow these steps to secure your account:
-            <ul className="list-none mt-2">
-              <Step title="Enter your email address" />
-              <Step title="Create a strong password" />
-              <Step title="Set up two-factor authentication" />
-              <Step title="Verify your identity" />
-            </ul>
-          </div>
-          <p className="text-neutral-300 mt-4 relative z-20 text-sm">
-            Ensuring your account is properly secured helps protect your personal
-            information and data.
-          </p>
-        </CardSpotlight>
-      </div>
+        <div className="">
+            <motion.div
+                className="text-6xl mt-32 mb-20 text-center font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500"
+                id="certifications-heading"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1.5 }}
+            >
+                Certificates
+            </motion.div>
+            {/* InfiniteMovingCards wrapped around certificates */}
+            <InfiniteMovingCards
+                items={certificates.map((certificate, index) => (
+                    <CardSpotlight key={index} className="h-96 w-96">
+                        {/* Card Content */}
+                        <div className="flex flex-col justify-between h-full relative z-20">
+                            {/* Issued By Heading */}
+                            <p className="text-2xl font-bold text-white mt-4 text-center">
+                                {certificate.issuedby}
+                            </p>
+
+                            {/* Image Container */}
+                            <div className="flex justify-center items-center my-6">
+                                <img
+                                    src={certificate.imageUrl}
+                                    alt={certificate.name}
+                                    className="h-44 w-52 object-cover rounded-lg cursor-pointer"
+                                    onClick={() => handleImageClick(certificate.imageUrl)} // Handle image click
+                                />
+                            </div>
+
+                            {/* Certificate Name */}
+                            <p className="text-white text-sm text-center mb-4">
+                                {certificate.name}
+                            </p>
+                        </div>
+                    </CardSpotlight>
+                ))}
+                direction="left" // Set the scroll direction
+                speed="normal" // Set the speed of the scroll
+                pauseOnHover={true} // Pause scroll on hover
+                className="mt-10" // Optional additional styling
+            />
+
+            {/* Modal for displaying the clicked image */}
+            {selectedImage && (
+                <div
+                    className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+                    onClick={closeModal} // Close modal when clicking outside the image
+                >
+                    <div className="relative" onClick={(e) => e.stopPropagation()}> {/* Prevent modal close on image click */}
+                        <button
+                            className="absolute top-0 right-0 text-white text-xl p-2"
+                            onClick={closeModal}
+                        >
+                            X
+                        </button>
+                        <img
+                            src={selectedImage}
+                            alt="Enlarged certificate"
+                            className="h-auto w-auto max-w-3xl max-h-3xl"
+                        />
+                    </div>
+                </div>
+            )}
+        </div>
     );
-  }
-  
-
-const Step = ({ title }: { title: string }) => {
-  return (
-    <li className="flex gap-2 items-start">
-      <CheckIcon />
-      <p className="text-white">{title}</p>
-    </li>
-  );
-};
-
-const CheckIcon = () => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      className="h-4 w-4 text-blue-500 mt-1 flex-shrink-0"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path
-        d="M12 2c-.218 0 -.432 .002 -.642 .005l-.616 .017l-.299 .013l-.579 .034l-.553 .046c-4.785 .464 -6.732 2.411 -7.196 7.196l-.046 .553l-.034 .579c-.005 .098 -.01 .198 -.013 .299l-.017 .616l-.004 .318l-.001 .324c0 .218 .002 .432 .005 .642l.017 .616l.013 .299l.034 .579l.046 .553c.464 4.785 2.411 6.732 7.196 7.196l.553 .046l.579 .034c.098 .005 .198 .01 .299 .013l.616 .017l.642 .005l.642 -.005l.616 -.017l.299 -.013l.579 -.034l.553 -.046c4.785 -.464 6.732 -2.411 7.196 -7.196l.046 -.553l.034 -.579c.005 -.098 .01 -.198 .013 -.299l.017 -.616l.005 -.642l-.005 -.642l-.017 -.616l-.013 -.299l-.034 -.579l-.046 -.553c-.464 -4.785 -2.411 -6.732 -7.196 -7.196l-.553 -.046l-.579 -.034a28.058 28.058 0 0 0 -.299 -.013l-.616 -.017l-.318 -.004l-.324 -.001zm2.293 7.293a1 1 0 0 1 1.497 1.32l-.083 .094l-4 4a1 1 0 0 1 -1.32 .083l-.094 -.083l-2 -2a1 1 0 0 1 1.32 -1.497l.094 .083l1.293 1.292l3.293 -3.292z"
-        fill="currentColor"
-        strokeWidth="0"
-      />
-    </svg>
-  );
-};
+}
