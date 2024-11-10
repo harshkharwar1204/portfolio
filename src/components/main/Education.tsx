@@ -61,24 +61,24 @@ const {scrollYProgress} = useScroll(
 
                 <ul className='w-full flex flex-col items-center justify-between ml-4'>
                     <Details
-                        title="Bachelor of Science in Computer Science"
-                        place="University of Example"
-                        placeLink="https://exampleuniversity.com"
-                        time="2016 - 2020"
-                        info="Focused on software engineering, data structures, algorithms, and AI."
+                        title="Secondary School"
+                        place="SSRVM"
+                        placeLink="https://surat.ssrvm.org/"
+                        time="2006 - 2020"
+                        info="Focused on Secondary schooling"
                     />
                     <Details
-                        title="Bachelor of Science in Computer Science"
-                        place="University of Example"
-                        placeLink="https://exampleuniversity.com"
-                        time="2016 - 2020"
-                        info="Focused on software engineering, data structures, algorithms, and AI."
+                        title="High School"
+                        place="Bhagwan Mahawir School"
+                        placeLink="https://bmis.in/"
+                        time="2020 - 2022"
+                        info="Focused on High Schooling."
                     />
                     <Details
-                        title="Bachelor of Science in Computer Science"
-                        place="University of Example"
-                        placeLink="https://exampleuniversity.com"
-                        time="2016 - 2020"
+                        title="Bachelor of Technology in Computer Science"
+                        place="Symbiosis Institute of Technology"
+                        placeLink="https://www.sitpune.edu.in/"
+                        time="2022 - Present"
                         info="Focused on software engineering, data structures, algorithms, and AI."
                     />
                 </ul>
